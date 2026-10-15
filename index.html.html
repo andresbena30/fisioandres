@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisio<span style="color:#2563eb;">Andrés</span> | Ejercicios y Bienestar</title>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        :root {
+            --primario: #2563eb;
+            --secundario: #10b981;
+            --acento: #f59e0b;
+            --fondo: #f0f9ff;
+            --texto: #1e293b;
+            --sombra: 0 10px 40px rgba(0,0,0,0.08);
+            --sombra-hover: 0 15px 50px rgba(37, 99, 235, 0.15);
+        }
+
+        body {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0fdfa 100%);
+            min-height: 100vh;
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        /* 🔝 Barra de navegación */
+        nav {
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            padding: 1rem 0;
+        }
+
+        nav .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        nav .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primario);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav .logo span {
+            color: var(--secundario);
+        }
+
+        nav .logo i {
+            font-size: 1.8rem;
+            color: var(--secundario);
+        }
+
+        nav .nav-links a {
+            color: var(--texto);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav .nav-links a:hover {
+            color: var(--primario);
+        }
+
+        /* 🎇 Cabecera principal */
+        header {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            color: var(--primario);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        header h1 span {
+            color: var(--secundario);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .decoration-line {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primario), var(--secundario));
+            margin: 1.5rem auto;
+            border-radius: 2px;
+        }
+
+        /* 📦 Contenedor general */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primario);
+            margin-bottom: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        h2 i {
+            color: var(--secundario);
+        }
+
+        /* 🎬 Sección Video */
+        .video-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--sombra);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-hover);
+        }
+
+        .video-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--texto);
+        }
+
+        .video-card p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-youtube {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.25);
+        }
+
+        .btn-youtube:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.35);
+        }
+
+        .btn-youtube i {
+            font-size: 1.3rem;
+        }
+
+        /* 📋 Tabla de ejercicios */
+        .tabla-wrapper {
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--sombra);
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .tabla-wrapper:hover {
+            box-shadow: var(--sombra-hover);
+        }
+
+        .tabla-header {
+            background: linear-gradient(135deg, var(--primario), var(--secundario));
+            padding: 1.5rem 2rem;
+            color: white;
+        }
+
+        .tabla-header h3 {
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1.2rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+            color: var(--primario);
+            font-size: 0.95rem;
+        }
+
+        tr {
+            border-bottom: 1px solid #f1f5f9;
+            transition: background-color 0.25s;
+        }
+
+        tr:hover {
+            background-color: #f0f9ff;
+        }
+
+        tr:last-child {
+            border-bottom: none;
+        }
+
+        /* 📌 Tarjetas informativas */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--sombra);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-hover);
+        }
+
+        .info-card .icon-box {
+            width: 55px;
+            height: 55px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.8rem;
+            color: var(--primario);
+        }
+
+        .info-card p, .info-card ul {
+            color: #64748b;
+            font-size: 0.98rem;
+        }
+
+        .info-card ul {
+            padding-left: 1.2rem;
+        }
+
+        .info-card ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .icon-blue { background: #dbeafe; color: var(--primario); }
+        .icon-green { background: #d1fae5; color: var(--secundario); }
+        .icon-amber { background: #fef3c7; color: #d97706; }
+
+        /* 🔘 Botón */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primario), var(--secundario));
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+        }
+
+        /* 🦶 Pie de página */
+        footer {
+            background: linear-gradient(135deg, #1e40af, #065f46);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 📱 Responsivo */
+        @media (max-width: 768px) {
+            nav .nav-links { display: none; }
+            header h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            th, td { padding: 0.9rem 0.6rem; font-size: 0.9rem; }
+            .video-card, .info-card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🔝 Barra de Navegación -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa fa-heartbeat"></i>
+                Fisio<span>Andrés</span>
+            </div>
+            <div class="nav-links">
+                <a href="#video">Video</a>
+                <a href="#ejercicios">Ejercicios</a>
+                <a href="#informacion">Información</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 🎇 Cabecera -->
+    <header>
+        <h1>Bienvenido a <span>FisioAndrés</span></h1>
+        <div class="decoration-line"></div>
+        <p>Tu guía de ejercicios de fisioterapia para cuidar tu cuerpo y mejorar tu bienestar. ¡Hecha especialmente para ti!</p>
+    </header>
+
+    <div class="container">
+
+        <!-- 🎬 Sección Video -->
+        <section id="video">
+            <h2><i class="fa fa-play-circle"></i> Video de Rutina</h2>
+            <div class="video-card">
+                <h3>✨ Cuerpo Completo — Sin Equipamiento — 30 Minutos</h3>
+                <p>Una rutina completa pensada para fortalecer y mover tu cuerpo desde casa, paso a paso.</p>
+                <a href="https://www.youtube.com/watch?v=fjQHymlBex8" target="_blank" class="btn-youtube">
+                    <i class="fa fa-youtube-play"></i> Ver en YouTube
+                </a>
+            </div>
+        </section>
+
+        <!-- 📋 Tabla de Ejercicios -->
+        <section id="ejercicios">
+            <h2><i class="fa fa-list-alt"></i> Tabla de Ejercicios</h2>
+            <div class="tabla-wrapper">
+                <div class="tabla-header">
+                    <h3><i class="fa fa-calendar-check-o"></i> Tu rutina diaria recomendada</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ejercicio</th>
+                            <th>Zona</th>
+                            <th>Repeticiones</th>
+                            <th>Duración</th>
+                            <th>Objetivo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Rotación de cuello</strong></td>
+                            <td>Cervical</td>
+                            <td>10 por lado</td>
+                            <td>5 seg.</td>
+                            <td>Mejorar movilidad</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Elevación de hombros</strong></td>
+                            <td>Hombros</td>
+                            <td>15</td>
+                            <td>3 seg.</td>
+                            <td>Relajar tensión</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Flexión de rodilla</strong></td>
+                            <td>Rodilla / Muslo</td>
+                            <td>12 por pierna</td>
+                            <td>5 seg.</td>
+                            <td>Fortalecer articulación</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estiramiento isquiotibiales</strong></td>
+                            <td>Espalda baja / Piernas</td>
+                            <td>3 por lado</td>
+                            <td>20 seg.</td>
+                            <td>Mejorar flexibilidad</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Marcha sentado</strong></td>
+                            <td>Caderas / Piernas</td>
+                            <td>20 pasos</td>
+                            <td>—</td>
+                            <td>Recuperar movilidad</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 📌 Información -->
+        <section id="informacion">
+            <h2><i class="fa fa-info-circle"></i> Información y Recomendaciones</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="icon-box icon-blue">
+                        <i class="fa fa-bullseye"></i>
+                    </div>
+                    <h3>🎯 Propósito</h3>
+                    <p>FisioAndrés es tu guía personal de apoyo para realizar ejercicios de fisioterapia en casa. Recuerda siempre seguir las indicaciones de tu profesional de salud.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon-box icon-green">
+                        <i class="fa fa-check-square-o"></i>
+                    </div>
+                    <h3>✅ ¿Qué encontrarás aquí?</h3>
+                    <ul>
+                        <li>Video con rutina completa</li>
+                        <li>Tabla con ejercicios y tiempos</li>
+                        <li>Consejos y recomendaciones</li>
+                        <li>Diseño fácil de usar en cualquier dispositivo</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon-box icon-amber">
+                        <i class="fa fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>⚠️ Recuerda</h3>
+                    <p>Si sientes dolor o incomodidad durante cualquier ejercicio, detente inmediatamente. Tu salud es lo más importante.</p>
+                    <button class="btn" onclick="mostrarConsejo()">💡 Un consejo para ti</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 🦶 Pie de página -->
+    <footer>
+        <h3 style="margin-bottom: 1rem; font-size: 1.4rem;">💚 FisioAndrés — Tu salud, en tus manos</h3>
+        <p>Página creada con dedicación para acompañarte en tu proceso de recuperación y bienestar. No sustituye una consulta médica profesional.</p>
+        <p style="margin-top: 1.5rem; font-size: 0.9rem;">© 2026 FisioAndrés · ¡Cuídate mucho, Andrés! 💪</p>
+    </footer>
+
+    <script>
+        function mostrarConsejo() {
+            alert("💡 Andrés, recuerda: lo mejor es ser constante, no intentes hacer todo el primer día. ¡Paso a paso llegarás lejos! ¡Tú puedes! 💚");
+        }
+    </script>
+
+</body>
+</html>
