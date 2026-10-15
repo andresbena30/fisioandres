@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FisioAndrés | Fisioterapia y Bienestar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+
+        :root {
+            --primario: #2563eb;
+            --secundario: #10b981;
+            --acento: #f59e0b;
+            --oscuro: #1f2937;
+            --claro: #f0f9ff;
+            --sombra: 0 10px 40px rgba(37, 99, 235, 0.15);
+            --sombra-strong: 0 20px 60px rgba(37, 99, 235, 0.25);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: var(--oscuro);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 🔝 Barra de Navegación */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primario), var(--secundario));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+            color: var(--primario);
+            -webkit-text-fill-color: var(--primario);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--oscuro);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primario), var(--secundario));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primario);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-nav {
+            background: linear-gradient(135deg, var(--primario), var(--secundario));
+            color: white !important;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primario);
+        }
+
+        /* 🦋 Sección Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primario), var(--secundario));
+            opacity: 0.05;
+        }
+
+        .hero::before {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            right: -200px;
+        }
+
+        .hero::after {
+            width: 400px;
+            height: 400px;
+            bottom: -100px;
+            left: -100px;
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primario);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primario), var(--secundario));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primario), var(--secundario));
+            color: white;
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 6px 25px rgba(37, 99, 235, 0.35);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(37, 99, 235, 0.45);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primario);
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border: 2px solid var(--primario);
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primario);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInRight 1s ease-out 0.3s both;
+        }
+
+        .img-main {
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: var(--sombra-strong);
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--sombra);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .card-1 {
+            top: 10%;
+            left: -30px;
+        }
+
+        .card-2 {
+            bottom: 15%;
+            right: -30px;
+            animation-delay: 0.5s;
+        }
+
+        .floating-card i {
+            font-size: 1.8rem;
+            color: var(--secundario);
+            margin-bottom: 0.3rem;
+        }
+
+        .floating-card h4 {
+            font-size: 1.2rem;
+            color: var(--primario);
+        }
+
+        .floating-card p {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* 📦 Secciones Generales */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 span {
+            background: linear-gradient(135deg, var(--primario), var(--secundario));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #6b7280;
+        }
+
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primario), var(--secundario));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* 🌟 Servicios */
+        .servicios {
+            background: white;
+        }
+
+        .servicios-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .servicio-card {
+            background: linear-gradient(145deg, #f0f9ff, #ffffff);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid rgba(37, 99, 235, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .servicio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primario), var(--secundario));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--sombra-strong);
+        }
+
+        .servicio-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .servicio-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(16, 185, 129, 0.1));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primario);
+            margin-bottom: 1.5rem;
+        }
+
+        .servicio-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            color: var(--oscuro);
+        }
+
+        .servicio-card p {
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .servicio-link {
+            color: var(--primario);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .servicio-link:hover {
+            gap: 0.8rem;
+        }
+
+        /* 📊 Estadísticas */
+        .estadisticas {
+            background: linear-gradient(135deg, var(--primario), var(--secundario));
+            color: white;
+        }
+
+        .estadisticas-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .estadistica-item h3 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .estadistica-item p {
+            font-size: 1rem;
+            opacity: 0.85;
+        }
+
+        /* 📋 Rutinas */
+        .rutinas {
+            background: #f8fafc;
+        }
+
+        .rutinas-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .rutinas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .rutina-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .rutina-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(37, 99, 235, 0.12);
+        }
+
+        .rutina-imagen {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primario), var(--secundario));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .rutina-contenido {
+            padding: 2rem;
+        }
+
+        .rutina-etiqueta {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primario);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .rutina-contenido h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .rutina-contenido p {
+            color: #6b7280;
+            margin-bottom: 1.2rem;
+        }
+
+        .rutina-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+
+        .rutina-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* 📝 Contacto */
+        .contacto {
+            background: white;
+        }
+
+        .contacto-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contacto-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contacto-info p {
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item i {
+            font-size: 1.3rem;
+            color: var(--primario);
+            margin-top: 0.3rem;
+        }
+
+        .info-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-item p {
+            color: #6b7280;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .contacto-form {
+            background: #f8fafc;
+            padding: 2.5rem;
+            border-radius: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--oscuro);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primario);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn-form {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primario), var(--secundario));
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-form:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+        }
+
+        /* 🦶 Pie de página */
+        footer {
+            background: var(--oscuro);
+            color: white;
+            padding: 5rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .footer-logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            background: linear-gradient(135deg, #60a5fa, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-desc {
+            color: #9ca3af;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-redes {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-redes a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-redes a:hover {
+            background: var(--primario);
+            transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* 📱 Responsivo */
+        @media (max-width: 1024px) {
+            .hero-container,
+            .contacto-container,
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .estadisticas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .floating-card {
+                position: static;
+                margin-top: 1rem;
+                display: inline-block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .estadisticas-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .estadistica-item h3 {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🔝 Navegación -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-heartbeat"></i>
+                FisioAndrés
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#rutinas">Rutinas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#contacto" class="btn-nav">Agendar Cita</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 🦋 Sección Principal -->
+    <section class="hero" id="inicio">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">🏥 Fisioterapia profesional a tu alcance</span>
+                <h1>Tu movimiento, <br><span>tu bienestar</span></h1>
+                <p>Recupera tu movilidad, alivia el dolor y fortalece tu cuerpo con rutinas diseñadas especialmente para ti. Tu salud es mi prioridad.</p>
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn-primary">
+                        <i class="fas fa-calendar-check"></i> Agendar cita
+                    </a>
+                    <a href="#servicios" class="btn-secondary">
+                        <i class="fas fa-info-circle"></i> Conocer más
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fisioterapia" class="img-main">
+                <div class="floating-card card-1">
+                    <i class="fas fa-user-check"></i>
+                    <h4>+500</h4>
+                    <p>Pacientes atendidos</p>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-award"></i>
+                    <h4>10+</h4>
+                    <p>Años de experiencia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🌟 Servicios -->
+    <section class="servicios" id="servicios">
+        <div class="section-header">
+            <h2>Mis <span>Servicios</span></h2>
+            <div class="divider"></div>
+            <p>Tratamientos personalizados para cuidar de tu salud y mejorar tu calidad de vida.</p>
+        </div>
+        <div class="servicios-grid">
+            <div class="servicio-card">
+                <div class="servicio-icon">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <h3>Rehabilitación Física</h3>
+                <p>Recuperación de lesiones, postoperatorios y tratamientos para aliviar dolores crónicos y agudos.</p>
+                <a href="#" class="servicio-link">Saber más <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="servicio-card">
+                <div class="servicio-icon">
+                    <i class="fas fa-running"></i>
+                </div>
+                <h3>Prevención de Lesiones</h3>
+                <p>Ejercicios y técnicas para fortalecer tu cuerpo y evitar futuras lesiones en tu día a día.</p>
+                <a href="#" class="servicio-link">Saber más <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="servicio-card">
+                <div class="servicio-icon">
+                    <i class="fas fa-laptop-house"></i>
+                </div>
+                <h3>Rutinas desde Casa</h3>
+                <p>Programas de ejercicios adaptados para realizar en casa, sin necesidad de equipamiento especial.</p>
+                <a href="#" class="servicio-link">Saber más <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="servicio-card">
+                <div class="servicio-icon">
+                    <i class="fas fa-spa"></i>
+                </div>
+                <h3>Terapia Manual</h3>
+                <p>Técnicas manuales especializadas para aliviar tensiones musculares y mejorar la circulación.</p>
+                <a href="#" class="servicio-link">Saber más <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="servicio-card">
+                <div class="servicio-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3>Salud Postural</h3>
+                <p>Corrección de postura y ejercicios para prevenir dolores de espalda y cuello por uso de tecnología.</p>
+                <a href="#" class="servicio-link">Saber más <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="servicio-card">
+                <div class="servicio-icon">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <h3>Planes Personalizados</h3>
+                <p>Evaluación completa y plan de ejercicios único diseñado según tus necesidades y objetivos.</p>
+                <a href="#" class="servicio-link">Saber más <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📊 Estadísticas -->
+    <section class="estadisticas">
+        <div class="estadisticas-grid">
+            <div class="estadistica-item">
+                <h3>500+</h3>
+                <p>Pacientes recuperados</p>
+            </div>
+            <div class="estadistica-item">
+                <h3>15+</h3>
+                <p>Especialidades</p>
+            </div>
+            <div class="estadistica-item">
+                <h3>98%</h3>
+                <p>Satisfacción</p>
+            </div>
+            <div class="estadistica-item">
+                <h3>24/7</h3>
+                <p>Apoyo en línea</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📋 Rutinas -->
+    <section class="rutinas" id="rutinas">
+        <div class="section-header">
+            <h2>Rutinas <span>Recomendadas</span></h2>
+            <div class="divider"></div>
+            <p>Ejercicios sencillos que puedes empezar hoy mismo desde casa.</p>
+        </div>
+        <div class="rutinas-container">
+            <div class="rutinas-grid">
+                <div class="rutina-card">
+                    <div class="rutina-imagen">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="rutina-contenido">
+                        <span class="rutina-etiqueta">Principiante</span>
+                        <h3>Movilidad de Cuello y Hombros</h3>
+                        <p>Alivia la tensión acumulada en la zona superior. Ideal si pasas mucho tiempo sentado.</p>
+                        <div class="rutina-meta">
+                            <span><i class="fas fa-clock"></i> 10 min</span>
+                            <span><i class="fas fa-signal"></i> Fácil</span>
+                            <span><i class="fas fa-fire"></i> 5 ejercicios</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rutina-card">
+                    <div class="rutina-imagen">
+                        <i class="fas fa-walking"></i>
+                    </div>
+                    <div class="rutina-contenido">
+                        <span class="rutina-etiqueta">Intermedio</span>
+                        <h3>Fortalecimiento de Piernas y Espalda</h3>
+                        <p>Mejora tu estabilidad y fortalece la base de tu cuerpo con ejercicios sencillos.</p>
+                        <div class="rutina-meta">
+                            <span><i class="fas fa-clock"></i> 20 min</span>
+                            <span><i class="fas fa-signal"></i> Medio</span>
+                            <span><i class="fas fa-fire"></i> 8 ejercicios</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rutina-card">
+                    <div class="rutina-imagen">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="rutina-contenido">
+                        <span class="rutina-etiqueta">Completo</span>
+                        <h3>Estiramientos de Cuerpo Completo</h3>
+                        <p>Relaja y flexibiliza todo tu cuerpo. Perfecto al final del día para descansar mejor.</p>
+                        <div class="rutina-meta">
+                            <span><i class="fas fa-clock"></i> 15 min</span>
+                            <span><i class="fas fa-signal"></i> Fácil</span>
+                            <span><i class="fas fa-fire"></i> 6 ejercicios</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📝 Contacto -->
+    <section class="contacto" id="contacto">
+        <div class="section-header">
+            <h2>¿Tienes alguna <span>pregunta?</span></h2>
+            <div class="divider"></div>
+            <p>Estoy aquí para ayudarte. Escríbeme y te responderé lo antes posible.</p>
+        </div>
+        <div class="contacto-container">
+            <div class="contacto-info">
+                <h3>Información de Contacto</h3>
+                <p>No dudes en ponerte en contacto conmigo. Juntos encontraremos la mejor solución para tu bienestar.</p>
+                
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Ubicación</h4>
+                        <p>Pasto, Nariño, Colombia</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Correo Electrónico</h4>
+                        <p>contacto@fisioandres.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Teléfono / WhatsApp</h4>
+                        <p>+57 3XX XXX XXXX</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h4>Horario de Atención</h4>
+                        <p>Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <form class="contacto-form">
+                <div class="form-group">
+                    <label for="nombre">Tu Nombre</label>
+                    <input type="text" id="nombre" placeholder="Escribe tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="asunto">Asunto</label>
+                    <input type="text" id="asunto" placeholder="¿En qué puedo ayudarte?">
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Tu Mensaje</label>
+                    <textarea id="mensaje" placeholder="Escribe aquí tu mensaje..."></textarea>
+                </div>
+                <button type="submit" class="btn-form">
+                    <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 🦶 Pie de página -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">💚 Fisio<span>Andrés</span></div>
+                <p class="footer-desc">Tu espacio de fisioterapia y bienestar. Cuidando de tu salud con dedicación y profesionalismo.</p>
+                <div class="footer-redes">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#rutinas">Rutinas</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#">Rehabilitación</a></li>
+                    <li><a href="#">Prevención</a></li>
+                    <li><a href="#">Rutinas en Casa</a></li>
+                    <li><a href="#">Terapia Manual</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Aviso de Privacidad</a></li>
+                    <li><a href="#">Términos de Uso</a></li>
+                    <li><a href="#">Políticas</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 FisioAndrés — Todos los derechos reservados. Hecho con 💚 en Pasto, Nariño.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
